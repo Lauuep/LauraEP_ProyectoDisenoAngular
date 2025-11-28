@@ -1,0 +1,66 @@
+<h2 class="text-4xl font-extrabold text-center text-gray-800 mb-6 flex items-center justify-center gap-3">
+  📎 Listado de episodios — <span class="text-yellow-500">The Office</span> S5  
+</h2>
+
+@if (theOffice().length === 0) {
+  <p class="text-center text-gray-500 text-lg italic">No hay episodios disponibles</p>
+}
+
+@else {
+
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="overflow-x-auto rounded-lg shadow-xl border-2 border-yellow-400">
+
+      <table class="min-w-full bg-white">
+        
+        <!-- CABECERA -->
+        <thead class="bg-blue-600 text-white">
+          <tr>
+            <th class="px-6 py-3 text-left text-xs font-semibold uppercase">Episodio</th>
+            <th class="px-6 py-3 text-left text-xs font-semibold uppercase">Título</th>
+            <th class="px-6 py-3 text-left text-xs font-semibold uppercase">Descripción</th>
+            <th class="px-6 py-3 text-left text-xs font-semibold uppercase">IMDB Rating</th>
+          </tr>
+        </thead>
+
+        <tbody class="divide-y divide-gray-200">
+
+          @for (episodio of theOffice(); track episodio.episode) {
+            <tr class="bg-yellow-50 transition duration-300">
+
+              <td class="px-6 py-4 text-sm font-bold text-gray-900">
+                {{ episodio.episode }}
+              </td>
+
+              <td class="px-6 py-4 text-gray-700 font-semibold">
+                {{ episodio.title }}
+              </td>
+
+              <td class="px-6 py-4 text-sm text-gray-600 max-w-md">
+                {{ episodio.description }}
+              </td>
+
+              <td class="px-6 py-4 text-yellow-600 font-bold text-lg flex items-center gap-1">
+                ⭐ {{ episodio.imdbRating }}
+              </td>
+
+            </tr>
+          }
+
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+}
+
+<h2 class="text-4xl font-extrabold text-center text-gray-800 mb-6 mt-10 flex items-center justify-center gap-3">
+  IMDB Rating — <span class="text-yellow-500">The Office</span> S5  
+</h2>
+
+<div class="max-w-5xl mx-auto px-4 mb-10">
+  <canvas id="ratingChart"></canvas>
+</div>
+
+
+
